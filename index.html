@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bicicleta 3D: partes y reparaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div class="app">
+  <div class="stage" id="stage">
+    <canvas id="view"></canvas>
+    <div class="brand"><h1>¿Cómo funciona<br>una bicicleta?</h1><p>Toca cualquier pieza para conocerla</p></div>
+    <div class="hint">Arrastra para girar · rueda o pellizco para zoom</div>
+    <div class="models">
+      <div class="seg" id="modelSeg"><button data-model="mtb">Montaña</button><button data-model="ruta">Ruta pro</button><button data-model="urbana">Urbana</button><button data-model="electrica">Eléctrica</button><button data-model="plegable">Plegable</button><button data-model="bmx">BMX</button><button data-model="ninos">Infantil</button></div>
+      <label class="toggle" id="trainT"><input type="checkbox" id="trainChk" checked><span class="sw"></span>Rueditas de apoyo</label>
+      <label class="toggle" id="foldT"><input type="checkbox" id="foldChk"><span class="sw"></span>Plegar</label>
+    </div>
+    <div id="tip"></div>
+    <div class="hud">
+      <div class="hud-t">Cambios</div>
+      <div class="gearbox"></div>
+      <div class="g-sum"></div>
+      <div class="g-txt"></div>
+    </div>
+    <div class="toolbar">
+      <button id="bPedal">▶ Pedalear</button>
+      <button id="bExplode">Separar piezas</button>
+      <button id="bReset">Centrar vista</button>
+      <button id="bQ" title="Más detalle o más fluidez">Calidad alta</button>
+    </div>
+  </div>
+  <aside>
+    <div class="tabs">
+      <button data-tab="partes" class="on">Partes</button>
+      <button data-tab="funciona">Cómo funciona</button>
+      <button data-tab="arreglar">Arreglar</button>
+      <button data-tab="talla">Talla</button>
+      <button data-tab="juego">Juego</button>
+    </div>
+    <div class="pane on" id="pane-partes"></div>
+    <div class="pane" id="pane-funciona"></div>
+    <div class="pane" id="pane-arreglar"></div>
+    <div class="pane" id="pane-talla"></div>
+    <div class="pane" id="pane-juego"></div>
+  </aside>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
