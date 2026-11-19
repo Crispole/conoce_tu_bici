@@ -41,6 +41,9 @@ function page({ url, title, desc, h1, body, jsonld = [], crumbs }) {
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${SITE}${url}">
 <meta property="og:image" content="${SITE}/Bici.png">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/favicon-192.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
 <script type="application/ld+json">
 ${JSON.stringify(ld)}
