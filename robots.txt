@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://conocetubici.vercel.app/sitemap.xml

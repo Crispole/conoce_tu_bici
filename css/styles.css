@@ -144,3 +144,8 @@
   .gfb{margin-top:12px;padding:10px 12px;border-radius:10px;font-size:14px}
   .gfb.ok{background:#dcfce7;color:#14532d}
   .gfb.no{background:#fee2e2;color:#7f1d1d}
+
+  .info{max-width:760px;margin:0 auto;padding:40px 20px 56px;color:var(--ink)}
+  .info h2{font-size:24px;margin:0 0 12px}
+  .info h3{font-size:18px;margin:24px 0 6px}
+  .info p,.info li{color:var(--muted)}
