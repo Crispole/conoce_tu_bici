@@ -1501,9 +1501,18 @@ function renderLocal(q, note=''){
   ansEl.innerHTML = `<div class="card" style="margin-top:18px">No encontré una guía para ese problema. Prueba con otras palabras (por ejemplo “freno”, “cadena”, “cambios”, “pinchazo”), elige un síntoma arriba o revisa la lista de todas las guías.${note?`<div class="src">${esc(note)}</div>`:''}</div>`;
 }
 let busy=false;
+/* Límites para controlar el costo de las consultas a Claude: texto corto, pausa entre
+   consultas y tope por sesión. Pasados los límites se usa la guía local (gratis). */
+const MAX_Q = 300, COOLDOWN_MS = 5000, MAX_AI_PER_SESSION = 20;
+let aiCalls = 0, lastAi = 0;
+qEl.maxLength = MAX_Q;
 async function solve(){
-  const q = qEl.value.trim(); if(!q||busy) return;
+  const q = qEl.value.trim().slice(0, MAX_Q); if(!q||busy) return;
   if(!sample){ renderLocal(q); return; }
+  const now = Date.now();
+  if(aiCalls >= MAX_AI_PER_SESSION){ renderLocal(q,'Llegaste al límite de consultas a Claude en esta sesión; te muestro la guía rápida.'); return; }
+  if(now - lastAi < COOLDOWN_MS){ renderLocal(q,'Espera unos segundos entre consultas a Claude; te muestro la guía rápida.'); return; }
+  aiCalls++; lastAi = now;
   busy=true; goEl.disabled=true; diagAns.innerHTML='';
   ansEl.innerHTML = `<div class="loading"><div class="spin"></div>Revisando el problema…</div>`;
   const prompt = `Eres un mecánico de bicicletas con mucha experiencia que enseña a principiantes en Chile. Responde en español claro y cercano (usa "tú").
